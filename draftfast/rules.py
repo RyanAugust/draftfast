@@ -6,6 +6,7 @@ ROSTER_SIZE = {
     DRAFT_KINGS: {
         'NFL': 9,
         'NFL_SHOWDOWN': 6,
+        'MLB_SHOWDOWN': 6,
         'NBA': 8,
         'NBA_SHOWDOWN': 6,
         'WNBA': 6,
@@ -13,6 +14,7 @@ ROSTER_SIZE = {
         'SOCCER': 8,
         'EL': 6,
         'NHL': 9,
+        'NHL_SHOWDOWN': 6,
     },
     FAN_DUEL: {
         'NFL': 9,
@@ -37,6 +39,8 @@ SALARY_CAP = {
         'SOCCER': 50_000,
         'EL': 50_000,
         'NHL': 50_000,
+        'NHL_SHOWDOWN': 50_000,
+        'MLB_SHOWDOWN': 50_000,
     },
     FAN_DUEL: {
         'NFL': 60_000,
@@ -125,7 +129,14 @@ POSITIONS = {
             ['W', 3, 4],
             ['D', 2, 3],
             ['G', 1, 1],
-        ]
+        ],
+        'NHL_SHOWDOWN': [
+            ['FLEX', 6, 6],
+        ],
+        'MLB_SHOWDOWN': [
+            ['CPT', 1, 1],
+            ['FLEX', 5, 5],
+        ],
     },
     FAN_DUEL: {
         'NBA': [
@@ -348,6 +359,18 @@ DK_NHL_RULE_SET = RuleSet(
     general_position_limits=[],
 )
 
+DK_NHL_SHOWDOWN_RULE_SET = RuleSet(
+    site=DRAFT_KINGS,
+    league='NHL_SHOWDOWN',
+    roster_size=ROSTER_SIZE[DRAFT_KINGS]['NHL_SHOWDOWN'],
+    salary_max=SALARY_CAP[DRAFT_KINGS]['NHL_SHOWDOWN'],
+    position_limits=POSITIONS[DRAFT_KINGS]['NHL_SHOWDOWN'],
+    offensive_positions=['C', 'W'],
+    defensive_positions=['G', 'D'],
+    general_position_limits=[],
+    game_type='showdown',
+)
+
 DK_NBA_PICKEM_RULE_SET = RuleSet(
     site=DRAFT_KINGS,
     league='NBA',
@@ -355,4 +378,14 @@ DK_NBA_PICKEM_RULE_SET = RuleSet(
     salary_max=None,
     position_limits=None,
     game_type='pickem',
+)
+
+DK_MLB_SHOWDOWN_RULE_SET = RuleSet(
+    site=DRAFT_KINGS,
+    league='MLB_SHOWDOWN',
+    roster_size=ROSTER_SIZE[DRAFT_KINGS]['MLB_SHOWDOWN'],
+    salary_max=SALARY_CAP[DRAFT_KINGS]['MLB_SHOWDOWN'],
+    position_limits=POSITIONS[DRAFT_KINGS]['MLB_SHOWDOWN'],
+    general_position_limits=[],
+    game_type='showdown'
 )
